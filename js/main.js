@@ -1,3 +1,36 @@
+var api = "AIzaSyBKnTI3FoPfA40zuQkjsw2lTDDditpO0z4";
+
+function initMap() {
+    var latLng = {
+        lat: 6.2315015,
+        lng: -75.547
+    };
+
+    var map = new google.maps.Map(document.getElementById('mapa'), {
+        'center': latLng,
+        'zoom': 14,
+        'mapTypeId': google.maps.MapTypeId.ROADMAP
+    });
+
+    var contenido = '<h2>GDLWEBCAMP</h2>'+
+                    '<p>Del 10 al 12 de Diciembre</p>'+
+                    '<p>Visitanos!</p>'
+
+    var informacion = new google.maps.InfoWindow({
+        content: contenido
+    });
+
+    var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        title: 'GDLWEPCAMP'
+    });
+
+    marker.addListener('click', function () {
+        informacion.open(map, marker);
+    });
+}
+
 (function() {
     "use strict";
 

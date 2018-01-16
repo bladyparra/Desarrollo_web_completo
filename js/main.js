@@ -30,16 +30,38 @@
         pase_dosdias.addEventListener('blur', mostrarDias);
         pase_completo.addEventListener('blur', mostrarDias);
 
-        nombre.addEventListener('blur', function(){
+        nombre.addEventListener('blur', validarCampos);
+        apellido.addEventListener('blur', validarCampos);
+        email.addEventListener('blur', validarCampos);
+        email.addEventListener('blur', validarEmail);
+
+        function validarCampos() {
             if (this.value === '') {
                 errorDiv.style.display = 'block';
-                errorDiv.innerHTML = "Este campo es obligatorio!";
-                this.style.border = '1px solid red';
-                errorDiv.style.border = '1px solid red';
-                console.log(errorDiv);
+                errorDiv.innerHTML = "¡Este campo es obligatorio!";
+                errorDiv.style.color = 'red'
+                this.style.border = '2px solid red';
+                errorDiv.style.border = '2px solid red';
             }
-        });
+            else {
+                errorDiv.style.display = 'none';
+                this.style.border = '1px solid #969696';
+            }
+        }
 
+        function validarEmail() {
+            if (this.value.indexOf("@") > -1) {
+                errorDiv.style.display = 'none';
+                this.style.border = '1px solid #969696';
+            }
+            else{
+                errorDiv.style.display = 'block';
+                errorDiv.innerHTML = "¡Debe de tener al menos un @!";
+                errorDiv.style.color = 'red'
+                this.style.border = '2px solid red';
+                errorDiv.style.border = '2px solid red';
+            }
+        }
 
 
         function calcularMontos(event) {

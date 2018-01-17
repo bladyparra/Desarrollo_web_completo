@@ -74,9 +74,9 @@ function initMap() {
                 if (this.value === '') {
                     errorDiv.style.display = 'block';
                     errorDiv.innerHTML = "¡Este campo es obligatorio!";
-                    errorDiv.style.color = 'red'
-                    this.style.border = '2px solid red';
-                    errorDiv.style.border = '2px solid red';
+                    errorDiv.style.color = 'red';
+                    this.style.border = '1px solid red';
+                    errorDiv.style.border = '1px solid red';
                 }
                 else {
                     errorDiv.style.display = 'none';
@@ -92,9 +92,9 @@ function initMap() {
                 else{
                     errorDiv.style.display = 'block';
                     errorDiv.innerHTML = "¡Debe de tener al menos un @!";
-                    errorDiv.style.color = 'red'
-                    this.style.border = '2px solid red';
-                    errorDiv.style.border = '2px solid red';
+                    errorDiv.style.color = 'red';
+                    this.style.border = '1px solid red';
+                    errorDiv.style.border = '1px solid red';
                 }
             }
 

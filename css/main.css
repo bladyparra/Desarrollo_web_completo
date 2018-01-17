@@ -1053,9 +1053,13 @@ div.resumen input {
 
 div.error {
     clear: both;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     display: none;
+    font: bold;
+    background-color: #F2F2F2;
+    box-shadow: 0px 0px 50px #666666;
+    border-radius: 10px;
 }
 
 /*=====  End of Páginas Internas  ======*/

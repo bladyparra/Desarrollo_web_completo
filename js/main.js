@@ -167,6 +167,10 @@ function initMap() {
 })();
 
 $(function(){
+
+    //Manejo de Lettering en el Nombre del Sitio
+    $('.nombre-sitio').lettering();
+
     //Programa de conferencias
     $('.programa-evento .info-curso:first').show();
     $('.menu-programa a:first').addClass('activo');

@@ -171,6 +171,23 @@ $(function(){
     //Manejo de Lettering en el Nombre del Sitio
     $('.nombre-sitio').lettering();
 
+    //Menu fijo
+    var windowheight = $(window).height();
+    var barraAltura = $('.barra').innerHeight();
+    console.log(barraAltura);
+
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+        if (scroll > windowheight) {
+            $('.barra').addClass('fixed');
+            $('body').css({'margin-top': barraAltura+'px'});
+        }
+        else{
+            $('.barra').removeClass('fixed');
+            $('body').css({'margin-top': '0px'});
+        }
+    });
+
     //Programa de conferencias
     $('.programa-evento .info-curso:first').show();
     $('.menu-programa a:first').addClass('activo');

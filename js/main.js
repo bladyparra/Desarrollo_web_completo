@@ -206,10 +206,18 @@ $(function(){
     });
 
     //Animaciones para los números de .resumen-evento
-    $('.resumen-evento li:nth-child(1) p').animateNumber({number: 6}, 1200);
-    $('.resumen-evento li:nth-child(2) p').animateNumber({number: 15}, 1200);
-    $('.resumen-evento li:nth-child(3) p').animateNumber({number: 3}, 1500);
-    $('.resumen-evento li:nth-child(4) p').animateNumber({number: 9}, 1500);
+    var resumenLista = $('.resumen-evento');
+    if (resumenLista.length > 0) {
+        $('.resumen-evento').waypoint(function(){
+            $('.resumen-evento li:nth-child(1) p').animateNumber({ number: 6 }, 1200);
+            $('.resumen-evento li:nth-child(2) p').animateNumber({ number: 15 }, 1200);
+            $('.resumen-evento li:nth-child(3) p').animateNumber({ number: 3 }, 1500);
+            $('.resumen-evento li:nth-child(4) p').animateNumber({ number: 9 }, 1500);
+        },{
+            offset: '60%'
+        });
+    }
+    
 
     //Animaciones para los números de .cuenta-regresiva
     $('.cuenta-regresiva').countdown('2018/12/10 09:00:00', function(event) {

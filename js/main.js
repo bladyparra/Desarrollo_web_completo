@@ -174,8 +174,6 @@ $(function(){
     //Menu fijo
     var windowheight = $(window).height();
     var barraAltura = $('.barra').innerHeight();
-    console.log(barraAltura);
-
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
         if (scroll > windowheight) {
@@ -186,6 +184,11 @@ $(function(){
             $('.barra').removeClass('fixed');
             $('body').css({'margin-top': '0px'});
         }
+    });
+
+    //Menu Responsive
+    $('.menu-movil').on('click', function(){
+        $('.navegacion-principal').slideToggle();
     });
 
     //Programa de conferencias
@@ -212,12 +215,6 @@ $(function(){
         $('#horas').html(event.strftime('%H'));
         $('#minutos').html(event.strftime('%M'));
         $('#segundos').html(event.strftime('%S'));
-
-
-    
-        
     });
-
-
 
 });

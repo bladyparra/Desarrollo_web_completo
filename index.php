@@ -74,7 +74,7 @@
               do {
                 $resultado = $conn->store_result();
                 $row = $resultado->fetch_all(MYSQLI_ASSOC); ?>
-                
+
                 <?php $i = 0; ?>
                 <?php foreach ($row as $evento): ?>
                   <?php if($i % 2 == 0) { ?>
@@ -170,7 +170,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos porro culpa a excepturi numquam ex hic, maiores, ipsum dicta perspiciatis doloremque illo libero itaque, saepe debitis optio facilis placeat ea.</p>
             <footer class="info-testimonial clearfix">
               <img src="img/testimonial.jpg" alt="Imágen Testimonial">
-              <cite>Oswaldo Aponte Escobedo 
+              <cite>Oswaldo Aponte Escobedo
                 <span>Diseñador en @prisma</span>
               </cite>
             </footer>
@@ -205,7 +205,7 @@
       <div class="contenido contenedor clearfix">
         <p>registrate al newslatter:</p>
         <h3>GDLWebCamp</h3>
-        <a href="#" class="button transparente">Registro</a>
+        <a href="#mc_embed_signup" class="boton_newsletter button transparente">Registro</a>
       </div><!--.contenido-->
     </div><!--.newsletter-->
 
@@ -221,4 +221,4 @@
       </div>
     </section>
 
-<?php include_once 'includes/templates/footer.php'; ?>    
+<?php include_once 'includes/templates/footer.php'; ?>

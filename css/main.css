@@ -1051,6 +1051,10 @@ div.resumen input {
     color: #fe4918;
 }
 
+/* input[disabled].button {
+    opacity: .5;
+} */
+
 div.error {
     clear: both;
     padding: 10px;
@@ -1118,7 +1122,6 @@ div.cboxElement {
     padding: 30px !important;
     text-align: center;
 }
-
 
 /*=====  End of Páginas Internas  ======*/
 

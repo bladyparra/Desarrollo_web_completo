@@ -14,7 +14,7 @@
       <link rel="stylesheet" href="css/normalize.css">
       <link rel="stylesheet" href="css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
-      
+
       <?php
         $archivo = basename($_SERVER['PHP_SELF']);
         $pagina = str_replace(".php", "", $archivo);
@@ -26,10 +26,10 @@
           echo '<link rel="stylesheet" href="css/lightbox.css">';
         }
       ?>
-      
+
       <link rel="stylesheet" href="css/main.css">
 
-      
+      <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 
     </head>
     <body class="<?php echo $pagina; ?>">
@@ -38,7 +38,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-        
+
     <header class="site-header">
       <div class="hero">
         <div class="contenido-header">
@@ -81,4 +81,3 @@
         </nav>
       </div><!--contenedor-->
     </div><!--barra-->
-    

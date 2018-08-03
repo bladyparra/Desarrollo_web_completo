@@ -41,7 +41,7 @@ function initMap() {
         var apellido = document.getElementById('apellido');
         var email = document.getElementById('email');
 
-        //Campos pases
+        //Campos input pases
         var pases_dia = document.getElementById('pase_dia');
         var pase_dosdias = document.getElementById('pase_dosdias');
         var pase_completo = document.getElementById('pase_completo');
@@ -49,7 +49,7 @@ function initMap() {
         //Botones y Divs
         var calcular = document.getElementById('calcular');
         var errorDiv = document.getElementById('error');
-        var btnRegistro = document.getElementById('btnRegistro');
+        var botonRegistro = document.getElementById('btnRegistro');
         var lista_productos = document.getElementById('lista-productos');
         var suma = document.getElementById('suma-total');
 
@@ -57,18 +57,27 @@ function initMap() {
         var camisas = document.getElementById('camisa_evento');
         var etiquetas = document.getElementById('etiquetas');
 
+        // botonRegistro.disabled = true;
+
         if (document.getElementById('calcular')) {
-        
+
             calcular.addEventListener('click', calcularMontos);
 
-            pase_dia.addEventListener('blur', mostrarDias);
-            pase_dosdias.addEventListener('blur', mostrarDias);
-            pase_completo.addEventListener('blur', mostrarDias);
+            pase_dia.addEventListener('input', mostrarDias);
+            pase_dosdias.addEventListener('input', mostrarDias);
+            pase_completo.addEventListener('input', mostrarDias);
 
             nombre.addEventListener('blur', validarCampos);
             apellido.addEventListener('blur', validarCampos);
             email.addEventListener('blur', validarCampos);
             email.addEventListener('blur', validarEmail);
+
+            // var formulario_editar = document.getElementsByClassName('editar-registrado');
+            // if(formulario_editar.length > 0) {
+            //     if(pase_dia.value || pase_dosdias.value || pase_completo.value ) {
+            //         mostrarDias();
+            //     }
+            // }
 
             function validarCampos() {
                 if (this.value === '') {
@@ -131,14 +140,15 @@ function initMap() {
                     if (cantEtiquetas >= 1) {
                         listadoProductos.push(cantEtiquetas + ' Etiquetas');
                     }
-                    
                     lista_productos.style.display ="block";
                     lista_productos.innerHTML = '';
                     for (var i = 0; i < listadoProductos.length; i++) {
                         lista_productos.innerHTML += listadoProductos[i] + '<br/>';
                     }
-
                     suma.innerHTML = "$ " + totalPagar.toFixed(2);
+
+                    botonRegistro.disabled = false;
+                    document.getElementById('total_pedido').value = totalPagar;
                 }
             }
 
@@ -162,9 +172,15 @@ function initMap() {
                 for (var i = 0; i < diasElegidos.length; i++) {
                     document.getElementById(diasElegidos[i]).style.display = "block";
                 }
+                // if(diasElegidos.length == 0 ) {
+                //   var todosDias = document.getElementsByClassName('contenido-dia');
+                //   for(var i = 0; i < todosDias.length; i++) {
+                //      todosDias[i].style.display = 'none';
+                //   }
+                // }
             }
         }
-        
+
     });//DOM CONTENT LOADED
 })();
 
@@ -222,7 +238,7 @@ $(function(){
             offset: '60%'
         });
     }
-    
+
 
     //Animaciones para los números de .cuenta-regresiva
     $('.cuenta-regresiva').countdown('2018/12/10 09:00:00', function(event) {
@@ -234,5 +250,6 @@ $(function(){
 
     //Colorbox
     $('.invitado-info').colorbox({inline:true, width:"50%"});
+    $('.boton_newsletter').colorbox({inline:true, width:"50%"});
 
 });

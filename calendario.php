@@ -1,82 +1,85 @@
 <?php include_once 'includes/templates/header.php'; ?>
 
-    <section class="seccion contenedor clearfix">
-      <h2>Calendario de Eventos</h2>
+	<section class="seccion contenedor clearfix">
+		<h2>Calendario de Eventos</h2>
 
-    <?php
-        try{
-            require ('includes/funciones/db_conexion.php');
-            $sql = "SELECT `evento_id`, `nombre_evento`, `fecha_evento`, `hora_evento`, `cat_evento`, `nombre_invitado`, `apellido_invitado` ";
-            $sql .= "FROM `eventos` ";
-            $sql .= "INNER JOIN `categoria_evento` ";
-            $sql .= "ON eventos.id_categoria=categoria_evento.id_categoria ";
-            $sql .= "INNER JOIN `invitados` ";
-            $sql .= "ON eventos.id_invitados=invitados.invitados_id ";
-            $sql .= "ORDER BY `evento_id` ";
-            $resultado = $conn->query($sql);
-        }
-        catch(Exeption $e){
-            $error = $e->getMessage();
-        }
-    ?>
+	<?php
+		try{
+			require_once ('includes/funciones/db_conexion.php');
+			$sql = " SELECT evento_id, nombre_evento, fecha_evento, hora_evento, cat_evento, icono, nombre_invitado, apellido_invitado ";
+			$sql .= " FROM eventos ";
+			$sql .= " INNER JOIN categoria_evento ";
+			$sql .= " ON eventos.id_categoria = categoria_evento.id_categoria ";
+			$sql .= " INNER JOIN invitados ";
+			$sql .= " ON eventos.id_invitados = invitados.invitados_id ";
+			$sql .= " ORDER BY evento_id ";
+			$resultado = $conn->query($sql);
+		}
+		catch(Exeption $e){
+			$error = $e->getMessage();
+		}
+	?>
 
-    <div class="calendario">
-        <?php while ($eventos = $resultado->fetch_all(MYSQLI_ASSOC)) { ?>
+		<div class="calendario">
+			<?php
+				$calendario = array();
 
-            <?php $dias = array(); ?>
-            <?php foreach ($eventos as $evento) {
-                $dias[] = $evento['fecha_evento'];
-            } ?>
-            
-            <?php $dias = array_values(array_unique($dias)); ?>
-            <?php $contador = 0; ?>
-            <?php foreach ($eventos as $evento): ?>
-                <?php $dia_actual = $evento['fecha_evento']; ?>
-                <?php if($dia_actual == $dias[$contador]): ?>
-                    <h3>
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                        <?php echo $evento['fecha_evento']; ?>
-                    </h3>
-                    <?php $contador++; ?>
-                    <?php if($contador == 3): ?>
-                        <?php $contador = 0; ?>
-                    <?php endif; ?>
-                <?php endif; ?>
+				while($eventos = $resultado->fetch_assoc()){
+					// Obtener la fecha del evento
+					$fecha = $eventos['fecha_evento'];
 
-                <div class="dia">
-                    <p class="titulo"><?php echo utf8_encode( $evento['nombre_evento']); ?></p>
-                    <p class="hora"><i class="fa fa-clock-o" aria-hidden="true"></i><?php echo $evento['fecha_evento'] ." ". $evento['hora_evento'] ." hrs" ; ?></p>
-                    <p>
-                        <?php $categoria_evento = $evento['cat_evento']; ?>
+					$evento = array(
+						'titulo' => $eventos['nombre_evento'],
+						'fecha' => $eventos['fecha_evento'],
+						'hora' => $eventos['hora_evento'],
+						'categoria' => $eventos['cat_evento'],
+						'icono' => $eventos['icono'],
+						'invitado' => $eventos['nombre_invitado'] . " " . $eventos['apellido_invitado']
+					);
 
-                        <?php 
-                            switch ($categoria_evento) {
-                                case 'Talleres':
-                                    echo '<i class="fa fa-code" aria-hidden="true"></i> Taller';
-                                    break;
-                                case 'Conferencias':
-                                    echo '<i class="fa fa-comment" aria-hidden="true"></i> Conferencias';
-                                    break;
-                                case 'Seminario':
-                                    echo '<i class="fa fa-university" aria-hidden="true"></i> Seminarios';
-                                    break;
-                                default:
-                                    echo "";
-                            }
-                        ?>
-                    </p>
-                    <p><i class="fa fa-user" aria-hidden="true"></i>
-                        <?php echo utf8_encode($evento['nombre_invitado'] ." ". $evento['apellido_invitado']); ?>
-                    </p>
+					$calendario[$fecha][] = $evento;
+					?>
+			<?php	} //while fetch_assoc() ?>
 
-                </div>
-            <?php endforeach; ?>
-        <?php }  ?>
-    </div><!-- .calendario -->
-    </section>
+			<?php
+				//Imprimir todos los eventos
+				foreach ($calendario as $dia => $lista_eventos) { ?>
+					<h3>
+						<i class="fa fa-calendar" aria-hidden="true"></i>
+						<?php
+							//Unix
+							setlocale(LC_TIME, 'es_ES.UTF-8');
+							//Windows
+							setlocale(LC_TIME, 'spanish');
 
-    <?php
-        $conn->close();
-    ?>
+							echo utf8_encode(strftime("%A, %d de %B del %Y", strtotime($dia)));
+						?>
+					</h3>
+
+					<?php
+						foreach ($lista_eventos as $evento) { ?>
+							<div class="dia">
+								<p class="titulo"><?php echo utf8_encode($evento['titulo']); ?></p>
+								<p class="hora">
+									<i class="fa fa-clock-o" aria-hidden="true"></i>
+									<?php echo $evento['fecha'] . " " . $evento['hora']; ?>
+								</p>
+								<p>
+									<i class="fa <?php echo $evento['icono']; ?>" aria-hidden="true"></i>
+									<?php echo utf8_encode($evento['categoria']); ?>
+								</p>
+								<p>
+									<i class="fa fa-user" aria-hidden="true"></i>
+									<?php echo utf8_encode($evento['invitado']); ?>
+								</p>
+							</div>
+					<?php } //Fin de eventos ?>
+			<?php } //Fin forech de dias ?>
+		</div><!-- .calendario -->
+	</section>
+
+	<?php
+		$conn->close();
+	?>
 
 <?php include_once 'includes/templates/footer.php'; ?>

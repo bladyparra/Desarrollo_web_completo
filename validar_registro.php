@@ -11,8 +11,9 @@
   $etiquetas = $_POST['pedido_etiquetas'];
   include_once 'includes/funciones/funciones.php';
   $pedido = productos_json($boletos, $camisas, $etiquetas);
+  // Eventos
   $eventos = $_POST['registro'];
-  $registro = eventos_json($eventos); 
+  $registro = eventos_json($eventos);
   try {
     require_once('includes/funciones/db_conexion.php');
     $stmt = $conn->prepare("INSERT INTO registrados (nombre_registrado, apellido_registrado, email_registrado, fecha_registro, pases_articulos, talleres_registrados, regalo, total_pagado) VALUES (?,?,?,?,?,?,?,?)");
@@ -25,7 +26,6 @@
     $error = $e->getMessage();
   }
 ?>
-
 <?php endif; ?>
 
 <?php include_once 'includes/templates/header.php'; ?>

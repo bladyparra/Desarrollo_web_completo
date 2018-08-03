@@ -57,7 +57,7 @@ function initMap() {
         var camisas = document.getElementById('camisa_evento');
         var etiquetas = document.getElementById('etiquetas');
 
-        // botonRegistro.disabled = true;
+        botonRegistro.disabled = true;
 
         if (document.getElementById('calcular')) {
 

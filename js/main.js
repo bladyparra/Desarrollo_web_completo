@@ -1,41 +1,19 @@
-var api = "AIzaSyBKnTI3FoPfA40zuQkjsw2lTDDditpO0z4";
-
-function initMap() {
-    var latLng = {
-        lat: 6.2315015,
-        lng: -75.547
-    };
-
-    var map = new google.maps.Map(document.getElementById('mapa'), {
-        'center': latLng,
-        'zoom': 14,
-        'mapTypeId': google.maps.MapTypeId.ROADMAP
-    });
-
-    var contenido = '<h2>GDLWEBCAMP</h2>'+
-                    '<p>Del 10 al 12 de Diciembre</p>'+
-                    '<p>Visitanos!</p>'
-
-    var informacion = new google.maps.InfoWindow({
-        content: contenido
-    });
-
-    var marker = new google.maps.Marker({
-        position: latLng,
-        map: map,
-        title: 'GDLWEPCAMP'
-    });
-
-    marker.addListener('click', function () {
-        informacion.open(map, marker);
-    });
-}
-
 (function() {
     "use strict";
 
     var regalo = document.getElementById('regalo');
     document.addEventListener('DOMContentLoaded', function() {
+
+        var map = L.map('mapa').setView([6.231885, -75.545146], 15);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([6.231885, -75.545146]).addTo(map)
+            .bindPopup('<h2>GDLWEBCAMP</h2> <br> Del 10 al 12 de Diciembre <br> Visitanos!')
+            .openPopup();
+
         //Campos Datos de Usuario
         var nombre = document.getElementById('nombre');
         var apellido = document.getElementById('apellido');

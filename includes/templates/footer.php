@@ -58,7 +58,7 @@
       <!--End mc_embed_signup-->
     </footer>
 
-  
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
@@ -79,7 +79,8 @@
         echo '<script src="js/lightbox.js"></script>';
       }
     ?>
-
+    <!-- Leaflet script -->
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"></script>
     <script src="js/main.js"></script>
     <!-- Google-Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKnTI3FoPfA40zuQkjsw2lTDDditpO0z4&callback=initMap" async

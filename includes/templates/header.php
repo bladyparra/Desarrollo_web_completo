@@ -26,7 +26,8 @@
           echo '<link rel="stylesheet" href="css/lightbox.css">';
         }
       ?>
-
+      <!-- Leaflet CSS - https://leafletjs.com/ -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css">
       <link rel="stylesheet" href="css/main.css">
 
       <script src="js/vendor/modernizr-3.5.0.min.js"></script>

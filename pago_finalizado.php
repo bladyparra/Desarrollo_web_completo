@@ -12,12 +12,12 @@
             echo "El ID es {$paymentId} ";
 
             require_once('includes/funciones/db_conexion.php');
-            // $stmt = $conn->prepare("UPDATE `registrados` SET `pagado` = ? WHERE `ID_registrado` =  ? ");
-            // $pagado = 1;
-            // $stmt->bind_param("ii", $pagado, $id_pago);
-            // $stmt->execute();
-            // $stmt->close();
-            // $conn->close();
+            $stmt = $conn->prepare("UPDATE `registrados` SET `pagado` = ? WHERE `ID_registrado` =  ? ");
+            $pagado = 1;
+            $stmt->bind_param("ii", $pagado, $id_pago);
+            $stmt->execute();
+            $stmt->close();
+            $conn->close();
           }
           else {
             echo "El pago no se realizo";

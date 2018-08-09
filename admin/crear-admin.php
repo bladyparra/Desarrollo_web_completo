@@ -1,4 +1,5 @@
 <?php
+  include_once 'funciones/sesiones.php';
   include_once 'funciones/funciones.php';
   include_once 'templates/header.php';
   include_once 'templates/barra.php';
@@ -32,7 +33,7 @@
             </div>
             <div class="box-body">
               <!-- form start -->
-              <form role="form" name="crea-admin" id="crear-admin" method="POST" action="insertar-admin.php">
+              <form role="form" name="crear-admin" id="crear-admin" method="POST" action="insertar-admin.php">
                 <div class="box-body">
                   <div class="form-group">
                     <label for="usuario">Usuario:</label>

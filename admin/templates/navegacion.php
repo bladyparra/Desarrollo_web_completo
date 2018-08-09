@@ -100,7 +100,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-list-ul"></i> Ver todos</a></li>
-            <li><a href="#"><i class="fa fa-plus-circle"></i> Agregar</a></li>
+            <li><a href="crear-admin.php"><i class="fa fa-plus-circle"></i> Agregar</a></li>
           </ul>
         </li>
 

@@ -53,10 +53,10 @@
                         <td><?php echo $admin['usuario'] ?></td>
                         <td><?php echo $admin['nombre'] ?></td>
                         <td>
-                          <a href="editar-admin.php?id=<?php echo $admin['id_admin']; ?>" class="btn bg-orange btn-flat margin">
+                          <a href="editar-admin.php?id=<?php echo $admin['id_admin'] ?>" class="btn bg-orange btn-flat margin">
                             <i class="fa fa-pencil"></i>
                           </a>
-                          <a href="#" data-id="<?php echo $admin['id_admin']; ?>" data-tipo="admin" class="btn bg-maroon btn-flat margin borrar_resgitro">
+                          <a href="#" data-id="<?php echo $admin['id_admin']; ?>" data-tipo="admin" class="btn bg-maroon btn-flat margin borrar_registro">
                             <i class="fa fa-trash"></i>
                           </a>
                         </td>

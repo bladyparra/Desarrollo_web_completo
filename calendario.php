@@ -59,18 +59,18 @@
 					<?php
 						foreach ($lista_eventos as $evento) { ?>
 							<div class="dia">
-								<p class="titulo"><?php echo utf8_encode($evento['titulo']); ?></p>
+								<p class="titulo"><?php echo $evento['titulo']; ?></p>
 								<p class="hora">
 									<i class="fa fa-clock-o" aria-hidden="true"></i>
 									<?php echo $evento['fecha'] . " " . $evento['hora']; ?>
 								</p>
 								<p>
 									<i class="fa <?php echo $evento['icono']; ?>" aria-hidden="true"></i>
-									<?php echo utf8_encode($evento['categoria']); ?>
+									<?php echo $evento['categoria']; ?>
 								</p>
 								<p>
 									<i class="fa fa-user" aria-hidden="true"></i>
-									<?php echo utf8_encode($evento['invitado']); ?>
+									<?php echo $evento['invitado']; ?>
 								</p>
 							</div>
 					<?php } //Fin de eventos ?>

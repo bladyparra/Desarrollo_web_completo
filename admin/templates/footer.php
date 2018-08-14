@@ -13,6 +13,12 @@
   <!-- DataTables -->
   <script src="js/jquery.dataTables.min.js"></script>
   <script src="js/dataTables.bootstrap.min.js"></script>
+  <!-- bootstrap datepicker -->
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <!-- bootstrap time picker -->
+  <script src="js/bootstrap-timepicker.min.js"></script>
+  <!-- Select2 -->
+  <script src="js/select2.full.min.js"></script>
   <!-- SlimScroll -->
   <script src="js/jquery.slimscroll.min.js"></script>
   <!-- FastClick -->
